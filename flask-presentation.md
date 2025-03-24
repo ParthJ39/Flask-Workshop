@@ -26,7 +26,7 @@
 
 ---
 
-## Flask Environment Setup (35 minutes)
+## Flask Environment Setup
 
 ### Setting Up the Environment
 
@@ -70,7 +70,7 @@ python hello.py
 
 ---
 
-## App Routing (20 minutes)
+## App Routing
 
 ### Understanding URL Routing
 
@@ -106,7 +106,7 @@ def show_post(post_id):
 
 ---
 
-## URL Building (15 minutes)
+## URL Building
 
 ### Creating URLs Dynamically
 
@@ -151,7 +151,7 @@ def index():
 
 ---
 
-## Flask HTTP Methods (15 minutes)
+## Flask HTTP Methods
 
 ### Handling Different HTTP Methods
 
@@ -197,7 +197,7 @@ def form():
 
 ---
 
-## Flask Request Object (15 minutes)
+## Flask Request Object 
 
 ### Working with Request Data
 
@@ -242,7 +242,7 @@ def api_data():
 
 ---
 
-## Flask Cookies (15 minutes)
+## Flask Cookies 
 
 ### Managing Cookies in Flask
 
@@ -285,7 +285,7 @@ def visit_counter():
 
 ---
 
-## File Uploading in Flask (25 minutes)
+## File Uploading in Flask 
 
 ### Handling File Uploads
 
@@ -368,7 +368,7 @@ def upload_file_safe():
 
 ---
 
-## Final Hands-on Exercise (20 minutes)
+## Final Hands-on Exercise
 
 ### Creating a Mini Blog Application
 
