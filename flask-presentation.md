@@ -2,7 +2,7 @@
 
 ---
 
-## Introduction to Flask (10 minutes)
+## Introduction to Flask
 
 ### What is Flask?
 - Lightweight and flexible web framework for Python
