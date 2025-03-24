@@ -1,0 +1,14 @@
+# Get all items
+curl http://localhost:5000/api/items
+
+# Get a specific item
+curl http://localhost:5000/api/items/1
+
+# Create a new item
+curl -X POST -H "Content-Type: application/json" -d '{"name":"New Item","description":"A new item"}' http://localhost:5000/api/items
+
+# Update an item
+curl -X PUT -H "Content-Type: application/json" -d '{"name":"Updated Name"}' http://localhost:5000/api/items/1
+
+# Delete an item
+curl -X DELETE http://localhost:5000/api/items/1

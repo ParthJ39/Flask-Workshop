@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Flask Routes Demo{% endblock %}
+{% block nav_home %}active{% endblock %}
+{% block current_route %}/{% endblock %}
+{% block route_function %}home{% endblock %}
+{% block template_name %}home.html{% endblock %}
+
+{% block content %}
+<h2>Welcome to the Home Page</h2>
+<p>This is a demonstration of Flask's URL routing capabilities. Click on the navigation links above to explore different routes in this application.</p>
+<p>Flask is a lightweight WSGI web application framework in Python. It's designed to make getting started with web development quick and easy, with the ability to scale up to complex applications.</p>
+<p>In this demo, we're showcasing how Flask handles different URL routes using decorators like <code>@app.route('/')</code> to map URLs to Python functions.</p>
+{% endblock %}

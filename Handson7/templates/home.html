@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flask Dynamic Routes Demo</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #3498db;
+        }
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .link {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .link:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Flask Dynamic Routes Demo</h1>
+
+    <div class="card">
+        <h2>User Profiles</h2>
+        <p>Check out these example user profiles:</p>
+        <div class="links">
+            {% for link in user_links %}
+                <a href="{{ link.url }}" class="link">{{ link.name }}'s Profile</a>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Blog Posts</h2>
+        <p>View these example blog posts:</p>
+        <div class="links">
+            {% for link in post_links %}
+                <a href="{{ link.url }}" class="link">Post #{{ link.id }}</a>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

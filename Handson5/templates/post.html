@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Details</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .post-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        .post-header {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        .post-title {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+        .post-meta {
+            display: flex;
+            align-items: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+        .post-author {
+            margin-right: 15px;
+            font-weight: bold;
+            color: #3498db;
+        }
+        .post-content {
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .post-image {
+            width: 100%;
+            height: 300px;
+            background-color: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #7f8c8d;
+            margin-bottom: 20px;
+        }
+        .comment-section {
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-top: 1px solid #eee;
+        }
+        .comment {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        .comment:last-child {
+            border-bottom: none;
+        }
+        .comment-author {
+            font-weight: bold;
+            color: #3498db;
+        }
+        .comment-text {
+            margin-top: 5px;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="post-card">
+            <div class="post-header">
+                <h1 class="post-title">Post #{{ post_id }}: Amazing Adventure</h1>
+                <div class="post-meta">
+                    <span class="post-author">@johndoe</span>
+                    <span>Posted on March 24, 2025</span>
+                </div>
+            </div>
+            <div class="post-content">
+                <div class="post-image">Post Image Placeholder</div>
+                <p>This is post number {{ post_id }} in our collection. Each post has a unique ID that helps us organize and retrieve content efficiently.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum. Cras porttitor metus vel lorem finibus convallis. Sed eleifend posuere est, at rutrum tortor sollicitudin vel.</p>
+                <p>Curabitur sit amet est eget nunc egestas finibus. Nullam facilisis, ipsum id pharetra dapibus, turpis justo viverra felis, vitae congue metus nisl vitae arcu.</p>
+                <a href="/" class="btn">Back to Home</a>
+            </div>
+            <div class="comment-section">
+                <h3>Comments</h3>
+                <div class="comment">
+                    <div class="comment-author">@alice</div>
+                    <div class="comment-text">Great post! Thanks for sharing this interesting perspective.</div>
+                </div>
+                <div class="comment">
+                    <div class="comment-author">@bob</div>
+                    <div class="comment-text">I had a similar experience last summer. Would love to hear more details!</div>
+                </div>
+                <div class="comment">
+                    <div class="comment-author">@charlie</div>
+                    <div class="comment-text">The photos really bring this story to life. Looking forward to your next adventure!</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

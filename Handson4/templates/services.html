@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Services - Flask Routes Demo{% endblock %}
+{% block nav_services %}active{% endblock %}
+{% block current_route %}/services{% endblock %}
+{% block route_function %}services{% endblock %}
+{% block template_name %}services.html{% endblock %}
+
+{% block content %}
+<h2>Our Services</h2>
+<p>This page demonstrates another route in our Flask application.</p>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;">
+    <div style="background-color: #e8f0fe; padding: 1rem; border-radius: 4px; text-align: center;">
+        <h3>Web Development</h3>
+        <p>Custom web applications using Flask and other frameworks</p>
+    </div>
+
+    <div style="background-color: #e6f4ea; padding: 1rem; border-radius: 4px; text-align: center;">
+        <h3>API Design</h3>
+        <p>RESTful and GraphQL API development with Flask</p>
+    </div>
+
+    <div style="background-color: #fef7e0; padding: 1rem; border-radius: 4px; text-align: center;">
+        <h3>Database Integration</h3>
+        <p>SQL and NoSQL database integration with Flask-SQLAlchemy</p>
+    </div>
+
+    <div style="background-color: #fce8e6; padding: 1rem; border-radius: 4px; text-align: center;">
+        <h3>Deployment</h3>
+        <p>Deployment strategies for Flask applications</p>
+    </div>
+</div>
+
+<p>Each of these services is accessible through a unique URL route in our application!</p>
+{% endblock %}

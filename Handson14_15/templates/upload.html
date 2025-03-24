@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>File Upload Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .container {
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .messages {
+            margin-bottom: 15px;
+        }
+        .flash-message {
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 3px;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        .file-upload {
+            margin: 20px 0;
+        }
+        .allowed-types {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Upload File</h1>
+
+        <div class="messages">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="flash-message {% if 'successfully' in message %}success{% else %}error{% endif %}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
+
+        <form method="POST" enctype="multipart/form-data">
+            <div class="file-upload">
+                <label for="file">Select file to upload:</label>
+                <input type="file" name="file" id="file">
+                <div class="allowed-types">
+                    Allowed file types: {{ ', '.join(allowed_extensions) }}
+                </div>
+            </div>
+            <button type="submit">Upload</button>
+        </form>
+    </div>
+</body>
+</html>

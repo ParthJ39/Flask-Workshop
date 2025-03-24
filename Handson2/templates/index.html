@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello World</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f5ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s;
+        }
+        h1 {
+            color: #3366cc;
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        p {
+            color: #666;
+            font-size: 1.2em;
+        }
+        .highlight {
+            color: #ff6600;
+            font-weight: bold;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hello, <span class="highlight">World!</span></h1>
+        <p>Welcome to your stylish Flask application.</p>
+    </div>
+</body>
+</html>

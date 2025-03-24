@@ -1,0 +1,83 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask Cookies Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: {% if theme == 'dark' %}#333; color: #fff{% else %}#f5f5f5; color: #333{% endif %};
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: {% if theme == 'dark' %}#444{% else %}#fff{% endif %};
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid {% if theme == 'dark' %}#555{% else %}#eee{% endif %};
+        }
+        .info-box {
+            background-color: {% if theme == 'dark' %}#555{% else %}#f0f0f0{% endif %};
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+        a {
+            color: {% if theme == 'dark' %}#9cf{% else %}#07c{% endif %};
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            <h1>Flask Cookies Demo</h1>
+            <div>
+                {% if username %}
+                    <a href="{{ url_for('logout') }}">Logout</a>
+                {% else %}
+                    <a href="{{ url_for('login') }}">Login</a>
+                {% endif %}
+                |
+                <a href="{{ url_for('preferences') }}">Preferences</a>
+                |
+                <a href="{{ url_for('clear_all_cookies') }}">Clear All Cookies</a>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <h2>Cookie Information</h2>
+            <p><strong>Visit Count:</strong> {{ visit_count }}</p>
+            <p><strong>Theme:</strong> {{ theme }}</p>
+            <p><strong>Username:</strong> {% if username %}{{ username }}{% else %}Not set{% endif %}</p>
+        </div>
+
+        <div class="info-box">
+            <h2>About This Demo</h2>
+            <p>This demo shows how to:</p>
+            <ul>
+                <li>Set cookies with different expiration times</li>
+                <li>Read and use cookie values</li>
+                <li>Update existing cookies</li>
+                <li>Delete individual cookies</li>
+                <li>Clear all cookies</li>
+            </ul>
+            <p>Try logging in, changing themes, and clearing cookies to see how everything works!</p>
+        </div>
+    </div>
+</body>
+</html>

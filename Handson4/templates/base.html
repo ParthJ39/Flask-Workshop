@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Flask Routes Demo{% endblock %}</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        header {
+            background-color: #4285f4;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        nav {
+            background-color: #34a853;
+            padding: 1rem;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        nav a:hover {
+            background-color: #2d8a46;
+        }
+        .active {
+            background-color: #1e7e34;
+        }
+        main {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        footer {
+            background-color: #ea4335;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .route-info {
+            background-color: #f1f3f4;
+            padding: 1rem;
+            border-radius: 4px;
+            margin-top: 2rem;
+            font-family: monospace;
+        }
+        .animate-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Flask URL Routing Demo</h1>
+    </header>
+    <nav>
+        <a href="/" class="{% block nav_home %}{% endblock %}">Home</a>
+        <a href="/about" class="{% block nav_about %}{% endblock %}">About</a>
+        <a href="/contact" class="{% block nav_contact %}{% endblock %}">Contact</a>
+        <a href="/services" class="{% block nav_services %}{% endblock %}">Services</a>
+    </nav>
+    <main class="animate-in">
+        {% block content %}{% endblock %}
+
+        <div class="route-info">
+            <h3>Current Route:</h3>
+            <code>@app.route('{% block current_route %}{% endblock %}')</code>
+            <br>
+            <code>def {% block route_function %}{% endblock %}():</code>
+            <br>
+            <code>&nbsp;&nbsp;&nbsp;&nbsp;return render_template('{% block template_name %}{% endblock %}')</code>
+        </div>
+    </main>
+    <footer>
+        &copy; 2025 Flask Routing Demo
+    </footer>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}About - Flask Routes Demo{% endblock %}
+{% block nav_about %}active{% endblock %}
+{% block current_route %}/about{% endblock %}
+{% block route_function %}about{% endblock %}
+{% block template_name %}about.html{% endblock %}
+
+{% block content %}
+<h2>About Flask Routing</h2>
+<p>URL routing in Flask allows you to map specific URLs to Python functions. When a user navigates to a URL, Flask calls the associated function and returns its result.</p>
+<p>Key benefits of Flask's routing system:</p>
+<ul>
+    <li>Simple and intuitive decorator syntax</li>
+    <li>Support for dynamic routes with parameters</li>
+    <li>Ability to specify HTTP methods (GET, POST, etc.)</li>
+    <li>URL building with the url_for() function</li>
+</ul>
+<p>Flask's routing is built on Werkzeug, a WSGI utility library that provides routing, request, and response objects.</p>
+{% endblock %}
