@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Text Analyzer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .history-item {
+            background-color: #f9f9f9;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+        .upload-form {
+            margin: 20px 0;
+        }
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+        .clear-btn {
+            background-color: #f44336;
+        }
+        .clear-btn:hover {
+            background-color: #d32f2f;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>AI Text Analyzer</h1>
+        <p>Upload a text file to analyze its content using our AI algorithms.</p>
+
+        <div class="upload-form">
+            <form action="{{ url_for('upload_file') }}" method="POST" enctype="multipart/form-data">
+                <input type="file" name="file" accept=".txt" required>
+                <button type="submit" class="btn">Analyze Text</button>
+            </form>
+        </div>
+    </div>
+
+    {% if history and history|length > 0 %}
+    <div class="container">
+        <h2>Analysis History</h2>
+        {% for item in history %}
+        <div class="history-item">
+            <p><strong>File:</strong> {{ item.filename }}</p>
+            <p><strong>Word Count:</strong> {{ item.word_count }}</p>
+            <p><strong>Sentiment:</strong> {{ item.sentiment }}</p>
+            <p><strong>Analyzed on:</strong> {{ item.timestamp }}</p>
+        </div>
+        {% endfor %}
+
+        <a href="{{ url_for('clear_history') }}" class="btn clear-btn">Clear History</a>
+    </div>
+    {% endif %}
+</body>
+</html>

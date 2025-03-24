@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis Results - AI Text Analyzer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .section {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        .word-freq {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .word-item {
+            background-color: #e9f7ef;
+            padding: 5px 10px;
+            margin: 5px;
+            border-radius: 15px;
+        }
+        .sentiment-positive {
+            color: #2ecc71;
+        }
+        .sentiment-negative {
+            color: #e74c3c;
+        }
+        .sentiment-neutral {
+            color: #3498db;
+        }
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+
+        /* Progress bar styles for sentiment analysis and topics */
+        .progress-container {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .progress-label {
+            width: 80px;
+        }
+
+        .progress-bar {
+            flex-grow: 1;
+            height: 20px;
+            background-color: #f1f1f1;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 0 10px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: #4CAF50;
+        }
+
+        .sentiment-negative + .progress-container .progress-fill {
+            background-color: #e74c3c;
+        }
+
+        .progress-value {
+            width: 50px;
+            text-align: right;
+        }
+
+        .summary-item {
+            background-color: #e8f4f8;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            font-style: italic;
+        }
+
+        .topics-container {
+            margin-top: 15px;
+        }
+
+        .topic-item {
+            margin-bottom: 8px;
+        }
+
+        .topic-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Analysis Results</h1>
+        <p><strong>File:</strong> {{ analysis.filename }}</p>
+        <p><strong>Analyzed on:</strong> {{ analysis.timestamp }}</p>
+
+        <div class="section">
+            <h2>Text Statistics</h2>
+            <p><strong>Word Count:</strong> {{ analysis.word_count }}</p>
+
+            <h3>Top 10 Most Frequent Words:</h3>
+            <div class="word-freq">
+                {% for word, count in analysis.word_freq %}
+                <div class="word-item">{{ word }}: {{ count }}</div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Sentiment Analysis</h2>
+            <p><strong>Overall Sentiment:</strong>
+                <span class="
+                    {% if analysis.sentiment == 'Positive' %}sentiment-positive
+                    {% else %}sentiment-negative{% endif %}">
+                    {{ analysis.sentiment }}
+                </span>
+            </p>
+            <div class="progress-container">
+                <div class="progress-label">Positive:</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: {{ analysis.pos_score }}%"></div>
+                </div>
+                <div class="progress-value">{{ analysis.pos_score }}%</div>
+            </div>
+            <div class="progress-container">
+                <div class="progress-label">Negative:</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: {{ analysis.neg_score }}%"></div>
+                </div>
+                <div class="progress-value">{{ analysis.neg_score }}%</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>AI-Generated Summary</h2>
+            {% if analysis.summary %}
+                {% for sentence in analysis.summary %}
+                <div class="summary-item">{{ sentence }}</div>
+                {% endfor %}
+            {% else %}
+                <p>No summary generated.</p>
+            {% endif %}
+        </div>
+
+        <div class="section">
+            <h2>Topic Classification</h2>
+            <p>This text is most likely about:</p>
+            <div class="topics-container">
+                {% for topic in analysis.topics %}
+                <div class="topic-item">
+                    <div class="topic-name">{{ topic.topic|capitalize }}</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: {{ (topic.score * 100)|round }}%"></div>
+                    </div>
+                    <div class="progress-value">{{ (topic.score * 100)|round }}%</div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <a href="{{ url_for('index') }}" class="btn">Back to Home</a>
+    </div>
+</body>
+</html>
